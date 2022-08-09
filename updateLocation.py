@@ -13,7 +13,6 @@ mongo_connect = MongoClient(db_uri)
 
 db = mongo_connect.taxi_customer_db
 taxi_col = db.taxis
-res = list(taxi_col.find())
 
 for obj in taxi_col.find():
     taxi_col.update_one({'id':obj['id']}, {'$set':{'timestamp':datetime.datetime.now()}})
