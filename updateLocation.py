@@ -16,7 +16,7 @@ taxi_col = db.taxis
 
 for obj in taxi_col.find():
     taxi_col.update_one({'id':obj['id']}, {'$set':{'timestamp':datetime.datetime.now()}})
-    taxi_col.update_one({'id':obj['id']}, {'$set':{'location':{'coordinates':random_location()}}})
+    taxi_col.update_one({'id':obj['id']},{'$set':{'location':{'type':'Point','coordinates':random_location()}}})
     print('updating ...')
 
 
