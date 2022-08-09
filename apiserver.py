@@ -17,7 +17,6 @@ def search(user):
     if request.method == 'POST':
         source_location = request.form['source']
         destination_location = request.form['destination']
-        print(source_location, destination_location)
         range_query = {'location': SON([("$near", json.dumps(source_location)), ("$maxDistance", 1000)])}
         for taxi in taxis.find().limit(2):
             message[taxi['id']] = {
